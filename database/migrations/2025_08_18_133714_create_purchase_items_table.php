@@ -18,6 +18,9 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('price', 12, 2)->nullable();
             $table->timestamps();
+
+            $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade');
+            $table->foreign('product_variant_id')->references('id')->on('product_variants')->onDelete('cascade');
         });
     }
 

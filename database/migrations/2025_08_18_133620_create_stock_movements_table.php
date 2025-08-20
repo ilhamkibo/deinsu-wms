@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('stock_movements', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_variant_id');
-            $table->integer('warehouse_id');
+            $table->foreignId('product_variant_id')
+                ->constrained('product_variants')
+                ->cascadeOnDelete();
+            $table->foreignId('warehouse_id')
+                ->constrained('warehouses')
+                ->cascadeOnDelete();
             $table->enum('movement_type', ['IN', 'OUT', 'ADJUSTMENT']);
             $table->integer('quantity');
             $table->string('reference_type', 50)->nullable(); // e.g. 'PURCHASE', 'SALE'

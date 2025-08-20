@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('sku')->unique();
             $table->string('name');
-            $table->integer('category_id');
+            // Relasi ke categories
+            $table->foreignId('category_id')
+                ->nullable()
+                ->constrained('categories')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

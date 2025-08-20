@@ -19,7 +19,10 @@ return new class extends Migration
             $table->timestamps();
 
             // Unique constraint
-            $table->unique(['variant_id', 'warehouse_id']);
+            $table->unique(['product_variant_id', 'warehouse_id']);
+
+            $table->foreign('product_variant_id')->references('id')->on('product_variants')->onDelete('cascade');
+            $table->foreign('warehouse_id')->references('id')->on('warehouses')->onDelete('cascade');
         });
     }
 
