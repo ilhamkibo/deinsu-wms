@@ -20,7 +20,7 @@
                  <span class="sr-only">Toggle sidebar</span>
              </button>
              <a href={{ route('dashboard') }} class="flex items-center justify-between mr-4">
-                 <img src={{ asset('images/deinsu_logo.png') }} class="mr-3 h-8" alt="Flowbite Logo" />
+                 <img src={{ asset('images/deinsu_rbg.png') }} class="mr-3 h-10" alt="Flowbite Logo" />
              </a>
              <form action="#" method="GET" class="hidden md:block md:pl-2">
                  <label for="topbar-search" class="sr-only">Search</label>

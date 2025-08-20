@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InboundController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return redirect()->route('dashboard');
     });
-
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/home', [InboundController::class, 'index'])->name('home');
+
+    Route::middleware('role:superadmin')->prefix('master')->group(function () {
+        Route::resource('inbounds', InboundController::class);
+        Route::resource('products', ProductController::class);
+    });
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
