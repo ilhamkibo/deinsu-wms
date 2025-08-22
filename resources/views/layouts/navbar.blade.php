@@ -23,7 +23,11 @@
 
                     <span
                         class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span> --}}
-                    <img src={{ asset('images/deinsu_rbg.png') }} class="h-12 mr-1" alt="FlowBite Logo" />
+                    <img src="{{ asset('images/deinsu_rbg.png') }}" class="h-12 mr-1 block dark:hidden"
+                        alt="FlowBite Logo" />
+
+                    <img src="{{ asset('images/deinsu_logo.png') }}" class="h-12 mr-1 hidden dark:block"
+                        alt="FlowBite Logo (Dark)" />
                 </a>
                 <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
                     <label for="topbar-search" class="sr-only">Search</label>

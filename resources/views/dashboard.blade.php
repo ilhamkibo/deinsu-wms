@@ -79,7 +79,7 @@
                     </div>
                     <div class="flex-shrink-0">
                         <a href="#"
-                            class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                            class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-blue-700 sm:text-sm hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                             Sales Report
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -91,10 +91,6 @@
                 </div>
             </div>
             <!--Tabs widget -->
-            <div class="p-6">
-                <h1 class="text-xl font-bold mb-4">Line Chart with ApexCharts</h1>
-                <div id="chart" class="bg-white rounded-lg shadow p-4"></div>
-            </div>
             <div
                 class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800">
                 <h3 class="flex items-center mb-4 text-lg font-semibold text-gray-900 dark:text-white">
@@ -114,7 +110,7 @@
                         <p>Statistics is a branch of applied mathematics that involves the collection,
                             description, analysis, and inference of conclusions from quantitative data.</p>
                         <a href="#"
-                            class="flex items-center font-medium text-primary-600 dark:text-primary-500 dark:hover:text-primary-600 hover:text-primary-700">Read
+                            class="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700">Read
                             more <svg class="w-4 h-4 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -127,7 +123,7 @@
                 <div class="sm:hidden">
                     <label for="tabs" class="sr-only">Select tab</label>
                     <select id="tabs"
-                        class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option>Statistics</option>
                         <option>Services</option>
                         <option>FAQ</option>
@@ -464,7 +460,7 @@
                     </div>
                     <div class="flex-shrink-0">
                         <a href="#"
-                            class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                            class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-blue-700 sm:text-sm hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                             Full Report
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -525,25 +521,25 @@
                     <div class="flex items-center mb-2">
                         <div class="w-16 text-sm font-medium dark:text-white">50+</div>
                         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                            <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 18%"></div>
+                            <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500" style="width: 18%"></div>
                         </div>
                     </div>
                     <div class="flex items-center mb-2">
                         <div class="w-16 text-sm font-medium dark:text-white">40+</div>
                         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                            <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 15%"></div>
+                            <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500" style="width: 15%"></div>
                         </div>
                     </div>
                     <div class="flex items-center mb-2">
                         <div class="w-16 text-sm font-medium dark:text-white">30+</div>
                         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                            <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 60%"></div>
+                            <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500" style="width: 60%"></div>
                         </div>
                     </div>
                     <div class="flex items-center mb-2">
                         <div class="w-16 text-sm font-medium dark:text-white">20+</div>
                         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                            <div class="bg-primary-600 h-2.5 rounded-full dark:bg-primary-500" style="width: 30%"></div>
+                            <div class="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500" style="width: 30%"></div>
                         </div>
                     </div>
                 </div>
@@ -556,7 +552,7 @@
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Smart chat</h3>
                     <a href="#"
-                        class="inline-flex items-center p-2 text-sm font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                        class="inline-flex items-center p-2 text-sm font-medium rounded-lg text-blue-700 hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                         View all
                     </a>
                 </div>
@@ -608,14 +604,14 @@
                         </footer>
                         <p class="mb-2 text-gray-900 dark:text-white">
                             Hello <a href="#"
-                                class="font-medium hover:underline text-primary-600 dark:text-primary-500">@designteam</a>
+                                class="font-medium hover:underline text-blue-600 dark:text-blue-500">@designteam</a>
                             Let's schedule a kick-off meeting and workshop this week. It would be great to
                             gather everyone involved in the design project. Let me know about your
                             availability in the thread.
                         </p>
                         <p class="mb-3 text-gray-900 dark:text-white">Looking forward to it! Thanks.</p>
                         <a href="#"
-                            class="inline-flex items-center text-xs font-medium text-primary-700 sm:text-sm dark:text-primary-500">
+                            class="inline-flex items-center text-xs font-medium text-blue-700 sm:text-sm dark:text-blue-500">
                             4 replies
                             <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -813,7 +809,7 @@
                         </footer>
                         <p class="mb-2 text-gray-900 dark:text-white">
                             Ok <a href="#"
-                                class="font-medium hover:underline text-primary-600 dark:text-primary-500">@team</a>
+                                class="font-medium hover:underline text-blue-600 dark:text-blue-500">@team</a>
                             I'am attaching our offer and pitch deck. Take your time to review everything.
                             I'am looking forward to the next steps! Thank you.
                         </p>
@@ -823,8 +819,8 @@
                             <div
                                 class="flex items-center p-3 mb-3.5 border border-gray-200 dark:border-gray-700 rounded-lg">
                                 <div
-                                    class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-primary-100 dark:bg-primary-900">
-                                    <svg class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    class="flex items-center justify-center w-10 h-10 mr-3 rounded-lg bg-blue-100 dark:bg-blue-900">
+                                    <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300"
                                         fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                         aria-hidden="true">
                                         <path clip-rule="evenodd" fill-rule="evenodd"
@@ -948,7 +944,7 @@
                         </footer>
                         <p class="mb-2 text-gray-900 dark:text-white">
                             Hello <a href="#"
-                                class="font-medium hover:underline text-primary-600 dark:text-primary-500">@jeseleos</a>
+                                class="font-medium hover:underline text-blue-600 dark:text-blue-500">@jeseleos</a>
                             I need some informations about flowbite react version.
                         </p>
                     </article>
@@ -998,17 +994,17 @@
                         </footer>
                         <p class="mb-4 text-gray-900 dark:text-white">
                             Hi <a href="#"
-                                class="font-medium hover:underline text-primary-600 dark:text-primary-500">@josephh</a>
+                                class="font-medium hover:underline text-blue-600 dark:text-blue-500">@josephh</a>
                             Sure, just let me know whean you are available and we can speak.
                         </p>
                         <form>
                             <label for="chat" class="sr-only">Your message</label>
                             <div class="flex items-center mb-5">
                                 <textarea id="chat" rows="1"
-                                    class="block mr-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    class="block mr-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Reply in thread..."></textarea>
                                 <button type="submit"
-                                    class="inline-flex justify-center p-2 rounded-lg cursor-pointer text-primary-600 hover:bg-primary-100 dark:text-primary-500 dark:hover:bg-gray-600">
+                                    class="inline-flex justify-center p-2 rounded-lg cursor-pointer text-blue-600 hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600">
                                     <svg aria-hidden="true" class="w-6 h-6 rotate-90" fill="currentColor"
                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -1020,7 +1016,7 @@
                             </div>
                         </form>
                         <span
-                            class="inline-flex items-center text-xs font-medium cursor-pointer hover:underline text-primary-700 sm:text-sm dark:text-primary-500">
+                            class="inline-flex items-center text-xs font-medium cursor-pointer hover:underline text-blue-700 sm:text-sm dark:text-blue-500">
                             Hide thread
                             <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1039,7 +1035,7 @@
                         </div>
                         <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
                             <button type="submit"
-                                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                                 Send message
                             </button>
                             <div class="flex pl-0 space-x-1 sm:pl-2">
@@ -1116,7 +1112,7 @@
                                         </svg>
                                     </div>
                                     <input name="start" type="text"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="From">
                                 </div>
                                 <div class="relative">
@@ -1132,7 +1128,7 @@
                                         </svg>
                                     </div>
                                     <input name="end" type="text"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="To">
                                 </div>
                             </div>
@@ -1195,7 +1191,7 @@
                         </div>
                         <div class="flex-shrink-0">
                             <a href="#"
-                                class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                                class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-blue-700 sm:text-sm hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                                 Sales Report
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -1216,7 +1212,7 @@
                                 class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">Desktop</span>
                         </div>
                         <a href="#"
-                            class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                            class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-blue-700 sm:text-sm hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                             Full report
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -1314,7 +1310,7 @@
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Latest Activity</h3>
                     <a href="#"
-                        class="inline-flex items-center p-2 text-sm font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                        class="inline-flex items-center p-2 text-sm font-medium rounded-lg text-blue-700 hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                         View all
                     </a>
                 </div>
@@ -1331,7 +1327,7 @@
                             to over 20+ pages including a dashboard layout, charts, kanban board, calendar,
                             and pre-order E-commerce & Marketing pages.</p>
                         <a href="#"
-                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-primary-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn
                             more <svg class="w-3 h-3 ml-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -1351,7 +1347,7 @@
                             with dozens of web components and interactive elements built on top of Tailwind
                             CSS.</p>
                         <a href="https://flowbite.com/blocks/"
-                            class="inline-flex items-center text-xs font-medium hover:underline text-primary-700 sm:text-sm dark:text-primary-500">
+                            class="inline-flex items-center text-xs font-medium hover:underline text-blue-700 sm:text-sm dark:text-blue-500">
                             Go to Flowbite Blocks
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1379,7 +1375,7 @@
                 <div id="carousel" class="relative" data-carousel="">
                     <div class="relative mx-auto overflow-hidden h-[36rem] lg:h-[24rem]">
                         <div class="hidden duration-700 ease-in-out bg-white dark:bg-gray-800" data-carousel-item>
-                            <div class="flex items-center mb-4 text-lg font-medium text-primary-600">
+                            <div class="flex items-center mb-4 text-lg font-medium text-blue-600">
                                 <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path clip-rule="evenodd" fill-rule="evenodd"
@@ -1406,7 +1402,7 @@
                                 </li>
                             </ul>
                             <a href="#"
-                                class="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                                class="inline-flex items-center p-2 font-medium rounded-lg text-blue-700 hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                                 Get me there
                                 <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1507,7 +1503,7 @@
                                 </li>
                             </ul>
                             <a href="#"
-                                class="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                                class="inline-flex items-center p-2 font-medium rounded-lg text-blue-700 hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                                 Let's start
                                 <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1577,7 +1573,7 @@
                                 </li>
                             </ul>
                             <button type="button"
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                                 View more
                                 <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1648,7 +1644,7 @@
                             <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                 <li class="flex items-center">
                                     <input id="apple" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="apple"
                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -1658,7 +1654,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value="" checked
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit"
                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -1668,7 +1664,7 @@
 
                                 <li class="flex items-center">
                                     <input id="dell" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="dell"
                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -1678,7 +1674,7 @@
 
                                 <li class="flex items-center">
                                     <input id="asus" type="checkbox" value="" checked
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="asus"
                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -1702,7 +1698,7 @@
                                 </svg>
                             </div>
                             <input name="start" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="From">
                         </div>
                         <div class="relative">
@@ -1718,7 +1714,7 @@
                                 </svg>
                             </div>
                             <input name="end" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="To">
                         </div>
                     </div>
@@ -2257,7 +2253,7 @@
                 </div>
                 <div class="flex-shrink-0">
                     <a href="#"
-                        class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                        class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-blue-700 sm:text-sm hover:bg-gray-100 dark:text-blue-500 dark:hover:bg-gray-700">
                         Transactions Report
                         <svg class="w-4 h-4 ml-1 sm:w-5 sm:h-5" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
