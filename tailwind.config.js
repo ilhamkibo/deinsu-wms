@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
+
 export default {
     content: [
         "./resources/**/*.blade.php",
@@ -7,7 +9,14 @@ export default {
         "./node_modules/flowbite/**/*.js",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                blue: {
+                    ...colors.blue, // ambil semua default dari Tailwind
+                    750: "#163b56", // ganti sesuai kode warna yang kamu mau
+                },
+            },
+        },
     },
     plugins: [require("flowbite/plugin")],
 };
