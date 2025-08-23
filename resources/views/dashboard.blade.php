@@ -2,13 +2,24 @@
 
 @section('content')
     <div class="px-4 pt-6">
+        <div class="flex items-center justify-start mb-4">
+            <div>
+                <a href="#"
+                    class="mr-2 py-2.5 px-4 inline-flex  items-center text-dark dark:text-white rounded-lg bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700">+
+                    Add New Product</a>
+                <a href="#"
+                    class="py-2.5 px-4 inline-flex items-center text-dark dark:text-white rounded-lg bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-600 dark:bg-gray-700">+
+                    Add New orders</a>
+            </div>
+        </div>
         <div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
             <!-- Main widget -->
             <div
                 class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex-shrink-0">
-                        <span class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">$45,385</span>
+                        <span
+                            class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white">$45,385</span>
                         <h3 class="text-base font-light text-gray-500 dark:text-gray-400">Sales this week
                         </h3>
                     </div>
