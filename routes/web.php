@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::middleware('role:superadmin')->prefix('master')->group(function () {
+    Route::middleware('role:superadmin')->group(function () {
         Route::resource('inbounds', InboundController::class);
         Route::resource('products', ProductController::class);
     });
