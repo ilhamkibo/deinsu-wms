@@ -2,75 +2,82 @@
 
 @section('content')
     <div>
-        <div
-            class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
-            <div class="w-full mb-1">
-                <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
-                    <div class="flex items-center mb-4 sm:mb-0">
-                        <form class="sm:pr-3" action="#" method="GET">
+        <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700"
+            bis_skin_checked="1">
+            <div class="w-full mb-1" bis_skin_checked="1">
+                <div class="mb-4" bis_skin_checked="1">
+                    <nav class="flex mb-5" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
+                            <li class="inline-flex items-center">
+                                <a href={{ route('dashboard') }}
+                                    class="inline-flex items-center text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
+                                    <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                        </path>
+                                    </svg>
+                                    Home
+                                </a>
+                            </li>
+
+                            <li>
+                                <div class="flex items-center" bis_skin_checked="1">
+                                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500"
+                                        aria-current="page">Products</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+                    <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">All products</h1>
+                </div>
+                <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700"
+                    bis_skin_checked="1">
+                    <div class="flex items-center mb-4 sm:mb-0" bis_skin_checked="1">
+                        <form class="flex justify-center items-center" action="{{ route('products.index') }}"
+                            method="GET">
+                            @csrf
                             <label for="products-search" class="sr-only">Search</label>
-                            <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
-                                <input type="text" name="email" id="products-search"
+                            <div class="relative w-48 sm:w-64 xl:w-96">
+                                <input type="text" name="search" id="products-search"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Search for products">
                             </div>
+                            <button type="submit"
+                                class="ms-1 p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600">
+                                <svg height="16" width="16" viewBox="0 0 19 19"
+                                    class="fill-current text-gray-500 dark:text-gray-300">
+                                    <path
+                                        d="m8 16c4.418278 0 8-3.581722 8-8s-3.581722-8-8-8-8 3.581722-8 8 3.581722 8 8 8zm0-2c-3.3137085 0-6-2.6862915-6-6s2.6862915-6 6-6 6 2.6862915 6 6-2.6862915 6-6 6z">
+                                    </path>
+                                    <path
+                                        d="m12.2972351 13.7114222 4.9799555 4.919354c.3929077.3881263 1.0260608.3842503 1.4141871-.0086574.3881263-.3929076.3842503-1.0260607-.0086574-1.414187l-4.9799554-4.919354c-.3929077-.3881263-1.0260608-.3842503-1.4141871.0086573-.3881263.3929077-.3842503 1.0260608.0086573 1.4141871z">
+                                    </path>
+                                </svg>
+                            </button>
+
                         </form>
-                        <div class="flex items-center w-full sm:justify-end">
-                            <div class="flex pl-2 space-x-1">
-                                <a href="#"
-                                    class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                                <a href="#"
-                                    class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z">
-                                        </path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
-                    <button id="createProductButton"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                        type="button" data-drawer-target="drawer-create-product-default"
-                        data-drawer-show="drawer-create-product-default" aria-controls="drawer-create-product-default"
-                        data-drawer-placement="right">
-                        Add new product
-                    </button>
+                    <a href={{ route('products.create') }}
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+                        new product
+                    </a>
                 </div>
             </div>
         </div>
+
         <div class="flex flex-col">
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
                             <thead class="bg-gray-100 dark:bg-gray-700">
                                 <tr>
                                     <th scope="col" class="p-4">
@@ -90,15 +97,15 @@
                                     </th>
                                     <th scope="col"
                                         class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Variant
+                                        Penjualan
                                     </th>
                                     <th scope="col"
                                         class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        Description
+                                        Harga
                                     </th>
                                     <th scope="col"
                                         class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                        SKU
+                                        Stock
                                     </th>
                                     <th scope="col"
                                         class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -107,9 +114,8 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-
-                                @foreach ($products as $product)
-                                    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                @forelse ($products as $product)
+                                    <tr>
                                         <td class="w-4 p-4">
                                             <div class="flex items-center">
                                                 <input id="checkbox-194556" aria-describedby="checkbox-1" type="checkbox"
@@ -122,49 +128,32 @@
                                                 Kemeja
                                             </div>
                                         </td>
-                                        <td
-                                            class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                            <div class="flex-col flex items-center 2xl:flex-row">
-                                                <div class="shrink-0 mr-3">
-                                                    <img src="https://flowbite-admin-dashboard.vercel.app/images/products/ipad.png"
-                                                        alt="UHUY" class="w-16 h-16 object-cover rounded">
-                                                </div>
-                                                <div>
-                                                    <div class="text-base font-semibold text-gray-900 dark:text-white">
-                                                        {{ $product->name }}
-                                                    </div>
-                                                    <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                                        Html templates
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            @foreach ($product->productVariants as $variant)
+                                        <td class="p-3 flex items-center space-x-3">
+
+                                            <img src="https://flowbite.com/docs/images/products/apple-watch.png"
+                                                class="w-14 h-14 rounded object-cover">
+                                            <a href={{ route('products.edit', $product->id) }} class="group">
                                                 <div
-                                                    class="text-sm font-normal text-gray-500 dark:text-gray-400 py-1 border w-full border-gray-200">
-                                                    {{ $variant->color . ' ' . $variant->size }}
+                                                    class="font-semibold text-gray-900 dark:text-white group-hover:underline">
+                                                    {{ $product->name }}
                                                 </div>
-                                            @endforeach
+
+                                                <div class="text-xs text-gray-500">SKU Induk: {{ $product->sku ?? '-' }}
+                                                </div>
+                                                <div class="text-xs text-gray-500">ID Produk: {{ $product->id }}</div>
+                                            </a>
                                         </td>
-                                        <td
-                                            class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">
-                                            Start developing with an open-source library of over 450+ UI components,
-                                            sections, and pages built with the utility classes from Tailwind CSS and
-                                            designed in Figma.</td>
-                                        <td
-                                            class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            #194556</td>
-
-
+                                        <td class="p-3 text-gray-900 dark:text-white">10</td>
+                                        <td class="p-3 text-gray-900 dark:text-white">
+                                            Rp{{ number_format($product->min_price) }} -
+                                            Rp{{ number_format($product->max_price) }}
+                                        </td>
+                                        <td class="p-3 text-gray-900 dark:text-white">10</td>
                                         <td class="p-4 space-x-2 whitespace-nowrap">
-                                            <button type="button" id="updateProductButton"
-                                                data-drawer-target="drawer-update-product-default"
-                                                data-drawer-show="drawer-update-product-default"
-                                                aria-controls="drawer-update-product-default"
-                                                data-drawer-placement="right"
+
+                                            <a href="{{ route('products.edit', $product->id) }}"
                                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
                                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -175,7 +164,7 @@
                                                         clip-rule="evenodd"></path>
                                                 </svg>
                                                 Update
-                                            </button>
+                                            </a>
                                             <button type="button" id="deleteProductButton"
                                                 data-drawer-target="drawer-delete-product-default"
                                                 data-drawer-show="drawer-delete-product-default"
@@ -192,8 +181,52 @@
                                             </button>
                                         </td>
                                     </tr>
-                                @endforeach
 
+                                    <tr x-show="open" class="bg-gray-50 dark:bg-gray-700">
+                                        <td colspan="7" class="p-4">
+                                            <table class="w-full text-sm">
+                                                <thead>
+                                                    <tr class="border-b dark:border-gray-500 border-gray-200">
+                                                        <th class="p-2 text-left text-gray-700 dark:text-white">SKU</th>
+                                                        <th class="p-2 text-left text-gray-700 dark:text-white">Penjualan
+                                                        </th>
+                                                        <th class="p-2 text-left text-gray-700 dark:text-white">Size
+                                                        </th>
+                                                        <th class="p-2 text-left text-gray-700 dark:text-white">Harga
+                                                        </th>
+                                                        <th class="p-2 text-left text-gray-700 dark:text-white">Stok
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($product->productVariants as $variant)
+                                                        <tr
+                                                            class="border-b text-gray-500 dark:text-gray-400 dark:border-gray-500 border-gray-200">
+                                                            <td class="p-2">{{ $variant->sku ?? '-' }}</td>
+                                                            <td class="p-2">2</td>
+                                                            <td class="p-2">{{ $variant->size }}</td>
+                                                            <td class="p-2">Rp{{ number_format($variant->price) }}</td>
+                                                            <td class="p-2">
+                                                                {{ $variant->stock }}
+                                                                @if ($variant->stock == 0)
+                                                                    <span
+                                                                        class="ml-2 px-2 py-1 text-xs bg-gray-200 rounded">{{ $variant->stock ?? '0' }}
+                                                                        | Habis</span>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="7" class="p-4 text-center text-gray-500 dark:text-gray-400">
+                                            Tidak ada data
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -201,52 +234,10 @@
             </div>
         </div>
 
-        <div
-            class="sticky bottom-0 right-0 items-center w-full p-4 bg-white border-t border-gray-200 sm:flex sm:justify-between dark:bg-gray-800 dark:border-gray-700">
-            <div class="flex items-center mb-4 sm:mb-0">
-                <a href="#"
-                    class="inline-flex justify-center p-1 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-                <a href="#"
-                    class="inline-flex justify-center p-1 mr-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-                <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span
-                        class="font-semibold text-gray-900 dark:text-white">1-20</span> of <span
-                        class="font-semibold text-gray-900 dark:text-white">2290</span></span>
-            </div>
-            <div class="flex items-center space-x-3">
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <svg class="w-5 h-5 mr-1 -ml-1"" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    Previous
-                </a>
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Next
-                    <svg class="w-5 h-5 ml-1 -mr-1" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
+        <div>
+            {{ $products->onEachSide(1)->links('vendor.pagination.custom') }}
         </div>
+
 
         <!-- Edit Product Drawer -->
         <div id="drawer-update-product-default"
