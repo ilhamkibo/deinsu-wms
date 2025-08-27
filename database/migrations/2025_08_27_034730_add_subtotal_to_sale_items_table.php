@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_variants', function (Blueprint $table) {
-            $table->id();
-            $table->integer('product_id');
-            $table->string('sku')->unique();
-            $table->string('size');
-            $table->timestamps();
+        Schema::table('sale_items', function (Blueprint $table) {
+            $table->decimal('subtotal', 12, 2)->nullable(); // quantity * price
+
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_variants');
+        Schema::table('sale_items', function (Blueprint $table) {
+            $table->dropColumn('subtotal');
+        });
     }
 };

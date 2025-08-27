@@ -273,18 +273,6 @@ if (sidebar) {
     const toggleSidebarMobileClose = document.getElementById(
         "toggleSidebarMobileClose"
     );
-    // const toggleSidebarMobileSearch = document.getElementById(
-    //     "toggleSidebarMobileSearch"
-    // );
-
-    // toggleSidebarMobileSearch.addEventListener("click", () => {
-    //     toggleSidebarMobile(
-    //         sidebar,
-    //         sidebarBackdrop,
-    //         toggleSidebarMobileHamburger,
-    //         toggleSidebarMobileClose
-    //     );
-    // });
 
     toggleSidebarMobileEl.addEventListener("click", () => {
         toggleSidebarMobile(
@@ -304,3 +292,16 @@ if (sidebar) {
         );
     });
 }
+
+document
+    .getElementById("file_input")
+    .addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("preview-image").src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });

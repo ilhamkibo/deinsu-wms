@@ -47,19 +47,16 @@
                             <div class="relative w-48 sm:w-64 xl:w-96">
                                 <input type="text" name="search" id="products-search"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Search for products">
+                                    placeholder="Search for products" value={{ request('search') }}>
                             </div>
                             <button type="submit"
-                                class="ms-1 p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600">
-                                <svg height="16" width="16" viewBox="0 0 19 19"
-                                    class="fill-current text-gray-500 dark:text-gray-300">
-                                    <path
-                                        d="m8 16c4.418278 0 8-3.581722 8-8s-3.581722-8-8-8-8 3.581722-8 8 3.581722 8 8 8zm0-2c-3.3137085 0-6-2.6862915-6-6s2.6862915-6 6-6 6 2.6862915 6 6-2.6862915 6-6 6z">
-                                    </path>
-                                    <path
-                                        d="m12.2972351 13.7114222 4.9799555 4.919354c.3929077.3881263 1.0260608.3842503 1.4141871-.0086574.3881263-.3929076.3842503-1.0260607-.0086574-1.414187l-4.9799554-4.919354c-.3929077-.3881263-1.0260608-.3842503-1.4141871.0086573-.3881263.3929077-.3842503 1.0260608.0086573 1.4141871z">
-                                    </path>
+                                class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                 </svg>
+                                <span class="sr-only">Search</span>
                             </button>
 
                         </form>
@@ -143,12 +140,16 @@
                                                 <div class="text-xs text-gray-500">ID Produk: {{ $product->id }}</div>
                                             </a>
                                         </td>
-                                        <td class="p-3 text-gray-900 dark:text-white">10</td>
+                                        <td class="p-3 text-gray-900 dark:text-white">
+                                            {{ $product->total_quantity_sold }}
+                                        </td>
                                         <td class="p-3 text-gray-900 dark:text-white">
                                             Rp{{ number_format($product->min_price) }} -
                                             Rp{{ number_format($product->max_price) }}
                                         </td>
-                                        <td class="p-3 text-gray-900 dark:text-white">10</td>
+                                        <td class="p-3 text-gray-900 dark:text-white">
+                                            {{ $product->total_stock }}
+                                        </td>
                                         <td class="p-4 space-x-2 whitespace-nowrap">
 
                                             <a href="{{ route('products.edit', $product->id) }}"
@@ -203,16 +204,13 @@
                                                         <tr
                                                             class="border-b text-gray-500 dark:text-gray-400 dark:border-gray-500 border-gray-200">
                                                             <td class="p-2">{{ $variant->sku ?? '-' }}</td>
-                                                            <td class="p-2">2</td>
+                                                            <td class="p-2">
+                                                                {{ $variant->total_quantity_sold }}
+                                                            </td>
                                                             <td class="p-2">{{ $variant->size }}</td>
                                                             <td class="p-2">Rp{{ number_format($variant->price) }}</td>
                                                             <td class="p-2">
-                                                                {{ $variant->stock }}
-                                                                @if ($variant->stock == 0)
-                                                                    <span
-                                                                        class="ml-2 px-2 py-1 text-xs bg-gray-200 rounded">{{ $variant->stock ?? '0' }}
-                                                                        | Habis</span>
-                                                                @endif
+                                                                {{ $variant->stockBalance?->quantity ?? 0 }}
                                                             </td>
                                                         </tr>
                                                     @endforeach
