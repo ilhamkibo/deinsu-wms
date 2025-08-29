@@ -37,10 +37,50 @@
                 <img src={{ asset('images/deinsu_rbg.png') }} class="mr-4 h-28" alt="Deinsu Logo">
             </a>
             <!-- Card -->
-            <div class="w-full max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800">
+            <div class="w-full max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow dark:bg-gray-800 relative">
+
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                     Sign in to platform
                 </h2>
+
+
+
+                {{-- Error toast global --}}
+                @error('email')
+                    <div id="errorMessage"
+                        class="fixed top-5 right-5 z-50 flex items-center p-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-700 dark:text-red-400 dark:border-red-800 shadow-lg transition-all duration-500 ease-in-out opacity-0 translate-y-[-10px]">
+                        <svg class="flex-shrink-0 inline w-4 h-4 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-.993.883L9 6v4a1 1 0 001.993.117L11 10V6a1 1 0 00-1-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="font-medium">{{ $message }}</span>
+                    </div>
+                @enderror
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const errorMessage = document.getElementById("errorMessage");
+                        if (errorMessage) {
+                            // Trigger animasi muncul (fade-in + slide-down)
+                            setTimeout(() => {
+                                errorMessage.classList.remove("opacity-0", "translate-y-[-10px]");
+                                errorMessage.classList.add("opacity-100", "translate-y-0");
+                            }, 100);
+
+                            // Setelah 5 detik hilang (fade-out + slide-up)
+                            setTimeout(() => {
+                                errorMessage.classList.remove("opacity-100", "translate-y-0");
+                                errorMessage.classList.add("opacity-0", "translate-y-[-10px]");
+                            }, 5000);
+
+                            // Hapus elemen setelah animasi selesai (biar nggak makan space DOM)
+                            setTimeout(() => {
+                                errorMessage.remove();
+                            }, 5500);
+                        }
+                    });
+                </script>
 
                 <form class="mt-8 space-y-6" action="{{ route('login.post') }}" method="POST">
                     @csrf
@@ -56,9 +96,7 @@
                             Your password
                         </label>
                         <input type="password" name="password" id="password" placeholder="••••••••"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 
-               focus:border-blue-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 
-               dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required>
 
                         <!-- Tombol icon mata -->

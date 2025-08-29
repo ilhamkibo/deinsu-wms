@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div>
         <div class="p-4 block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5  dark:border-gray-700"
             bis_skin_checked="1">
@@ -51,15 +52,26 @@
 
             </div>
         </div>
+
         @if ($errors->any())
-            <div class="text-red-500">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            <div id="errorBox"
+                class="fixed top-5 mt-16 right-5 w-96 max-w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg shadow-lg opacity-0 transform translate-y-[-20px] transition-all duration-500 ease-in-out">
+                <div class="flex items-start">
+                    <!-- Icon -->
+                    <svg class="w-6 h-6 text-red-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856C18.07 19 19 18.07 19 16.938V7.062C19 5.93 18.07 5 16.938 5H7.062C5.93 5 5 5.93 5 7.062v9.876C5 18.07 5.93 19 7.062 19z" />
+                    </svg>
+                    <!-- Messages -->
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="mb-1">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         @endif
+
         <form action={{ route('products.store') }} method="POST" enctype="multipart/form-data"
             class="border-b border-gray-200 dark:border-gray-700 flex flex-col md:flex-row p-4 gap-4 justify-center items-center md:items-start">
             @csrf
@@ -79,7 +91,7 @@
                         class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer 
                            bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 
                            dark:border-gray-600 dark:placeholder-gray-400"
-                        id="file_input" required>
+                        value="{{ old('image') }}" id="file_input" required>
                 </div>
             </div>
             {{-- Product form --}}
@@ -96,14 +108,21 @@
                             Name</label>
                         <input type="text" id="name" name="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Kemeja Adem" required />
+                            placeholder="Kemeja Adem" required value="{{ old('name') }}" />
+                    </div>
+                    <div class="col-span-2">
+                        <label for="slug"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Slug</label>
+                        <input type="text" id="slug" name="slug"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="kemeja-adem" required value="{{ old('slug') }}" />
                     </div>
                     <div class="">
                         <label for="sku"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SKU</label>
                         <input type="text" id="sku" name="sku"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="XXX" required />
+                            placeholder="XXX" required value="{{ old('sku') }}" />
                     </div>
                     <div>
                         <label for="default"
@@ -111,10 +130,10 @@
                         <select id="default" name="category" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected value="">Select category</option>
-                            <option value="1">Kemeja</option>
-                            <option value="2">Kaos</option>
-                            <option value="3">Celana</option>
-                            <option value="4">Jaket</option>
+                            <option value="1" {{ old('category') == 1 ? 'selected' : '' }}>Kemeja</option>
+                            <option value="2" {{ old('category') == 2 ? 'selected' : '' }}>Kaos</option>
+                            <option value="3" {{ old('category') == 3 ? 'selected' : '' }}>Celana</option>
+                            <option value="4" {{ old('category') == 4 ? 'selected' : '' }}>Jaket</option>
                         </select>
                     </div>
                 </div>
@@ -122,35 +141,52 @@
 
                 {{-- product variant --}}
                 <div class="p-2 space-y-4" id="variants-wrapper">
-                    {{-- <div class="grid grid-cols-3 gap-4">
-                        <div>
-                            <label for="variant-sku"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">SKU
-                                Variant</label>
-                            <input type="text" id="variant-sku" name="variant-sku"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Kemeja Adem" required />
+                    @php
+                        $oldVariants = old('variants', [['sku' => '', 'price' => '', 'size' => '']]);
+                        // kalau tidak ada old(), minimal ada 1 variant kosong
+                    @endphp
+
+                    @foreach ($oldVariants as $i => $variant)
+                        <div
+                            class="variant-block flex gap-4 border p-2 rounded-lg bg-gray-50 dark:bg-gray-700 items-center">
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">SKU
+                                    Variant</label>
+                                <input type="text" name="variants[{{ $i }}][sku]"
+                                    class="variant-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                                    placeholder="SKU123" value="{{ $variant['sku'] }}" required />
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                                <input type="number" step="0.01" name="variants[{{ $i }}][price]"
+                                    class="variant-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                                    placeholder="100000" value="{{ $variant['price'] }}" required />
+                            </div>
+                            <div>
+                                <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Size</label>
+                                <select name="variants[{{ $i }}][size]"
+                                    class="variant-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                                    required>
+                                    <option value="">Select size</option>
+                                    <option value="S" {{ $variant['size'] == 'S' ? 'selected' : '' }}>S</option>
+                                    <option value="M" {{ $variant['size'] == 'M' ? 'selected' : '' }}>M</option>
+                                    <option value="L" {{ $variant['size'] == 'L' ? 'selected' : '' }}>L</option>
+                                    <option value="XL" {{ $variant['size'] == 'XL' ? 'selected' : '' }}>XL</option>
+                                </select>
+                            </div>
+                            <div class="flex gap-2 mt-6">
+                                <button type="button" class="remove-variant p-2 rounded bg-red-600 text-white"
+                                    title="Delete">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                        <div class="">
-                            <label for="price"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                            <input type="text" id="price" name="price"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="XXX" required />
-                        </div>
-                        <div>
-                            <label for="default"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Size</label>
-                            <select id="default"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>Select size</option>
-                                <option value="1">S</option>
-                                <option value="2">L</option>
-                                <option value="3">M</option>
-                                <option value="4">XL</option>
-                            </select>
-                        </div>
-                    </div> --}}
+                    @endforeach
                 </div>
                 <button class="m-2 w-24 p-2.5 rounded-lg mt-2 bg-blue-700 dark:text-white text-gray-900">Submit</button>
                 <button type="button" id="add-variant"
@@ -163,9 +199,11 @@
             const variantsWrapper = document.getElementById("variants-wrapper");
             const addVariantBtn = document.getElementById("add-variant");
 
+            let variantIndex = {{ count($oldVariants) }}; // lanjut dari jumlah old()
+
             function createVariantBlock(index) {
                 return `
-                    <div class="flex gap-4 border p-2 rounded-lg bg-gray-50 dark:bg-gray-700 items-center">
+                    <div class="variant-block flex gap-4 border p-2 rounded-lg bg-gray-50 dark:bg-gray-700 items-center">
                         <div>
                             <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">SKU Variant</label>
                             <input type="text" name="variants[${index}][sku]"
@@ -204,31 +242,18 @@
                 `;
             }
 
-            let variantIndex = 0;
-
-            function ensureAtLeastOneVariant() {
-                if (variantsWrapper.children.length === 0) {
-                    variantsWrapper.insertAdjacentHTML("beforeend", createVariantBlock(variantIndex++));
-                }
-            }
-
-            ensureAtLeastOneVariant();
 
             addVariantBtn.addEventListener("click", () => {
                 variantsWrapper.insertAdjacentHTML("beforeend", createVariantBlock(variantIndex++));
             });
 
-            // Delegasi event
             variantsWrapper.addEventListener("click", (e) => {
-                const btn = e.target.closest("button");
+                const btn = e.target.closest(".remove-variant");
                 if (!btn) return;
-
-                if (btn.classList.contains("remove-variant")) {
-                    if (variantsWrapper.children.length > 1) {
-                        btn.closest(".grid").remove();
-                    } else {
-                        alert("Minimal 1 variant harus ada!");
-                    }
+                if (variantsWrapper.children.length > 1) {
+                    btn.closest(".variant-block").remove();
+                } else {
+                    alert("Minimal 1 variant harus ada!");
                 }
             });
         </script>

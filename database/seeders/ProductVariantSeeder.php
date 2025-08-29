@@ -38,49 +38,49 @@ class ProductVariantSeeder extends Seeder
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 2,
             'sku' => 'KNSBS',
             'size' => 'S',
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 2,
             'sku' => 'KNSBM',
             'size' => 'M',
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 2,
             'sku' => 'KNSBL',
             'size' => 'L',
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 2,
             'sku' => 'KNSBXL',
             'size' => 'XL',
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 3,
             'sku' => 'KNSEM',
             'size' => 'M',
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 3,
             'sku' => 'KNSEL',
             'size' => 'L',
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 4,
             'sku' => 'KNSGM',
             'size' => 'M',
         ]);
 
         ProductVariant::create([
-            'product_id' => 1,
+            'product_id' => 4,
             'sku' => 'KNSGL',
             'size' => 'L',
         ]);

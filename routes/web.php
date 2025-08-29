@@ -26,6 +26,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::middleware('role:superadmin')->group(function () {
         Route::resource('inbounds', InboundController::class);
         Route::resource('products', ProductController::class);
+        Route::prefix('products')->name('products.')->group(function () {
+            Route::post('{product}/archive', [ProductController::class, 'archive'])->name('archive');
+            Route::post('{product}/restore', [ProductController::class, 'restore'])->name('restore');
+        });
     });
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

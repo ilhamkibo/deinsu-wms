@@ -48,6 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
             chart.updateOptions(getMainChartOptions());
         });
     }
+
+    const errorBox = document.getElementById("errorBox");
+
+    if (errorBox) {
+        // Muncul dengan animasi
+        setTimeout(() => {
+            errorBox.classList.remove("opacity-0", "translate-y-[-20px]");
+            errorBox.classList.add("opacity-100", "translate-y-0");
+        }, 100);
+
+        // Hilang otomatis setelah 5 detik
+        setTimeout(() => {
+            errorBox.classList.remove("opacity-100", "translate-y-0");
+            errorBox.classList.add("opacity-0", "translate-y-[-20px]");
+        }, 5000);
+    }
 });
 
 const getMainChartOptions = () => {
@@ -293,9 +309,10 @@ if (sidebar) {
     });
 }
 
-document
-    .getElementById("file_input")
-    .addEventListener("change", function (event) {
+const fileInput = document.getElementById("file_input");
+
+if (fileInput) {
+    fileInput.addEventListener("change", function (event) {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
@@ -305,3 +322,4 @@ document
             reader.readAsDataURL(file);
         }
     });
+}

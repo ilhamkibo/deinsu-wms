@@ -14,8 +14,15 @@ class Product extends Model
         'sku',
         'category_id',
         'is_archived',
+        'slug',
+        'archived_at',
         'photo'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function productVariants()
     {
@@ -61,5 +68,10 @@ class Product extends Model
         return $this->saleItems->sum(function ($item) {
             return $item->quantity * $item->price;
         });
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
