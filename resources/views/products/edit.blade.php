@@ -85,7 +85,7 @@
             </div>
         @endif
 
-        <form action={{ route('products.update', $product->id) }} method="POST" enctype="multipart/form-data"
+        <form action={{ route('products.update', $product->slug) }} method="POST" enctype="multipart/form-data"
             class="border-b border-gray-200 dark:border-gray-700 flex flex-col md:flex-row p-4 gap-4 justify-center items-center md:items-start">
             @csrf
             @method('PUT')
@@ -101,11 +101,18 @@
                         class="max-h-96 rounded-lg  object-contain" />
                 </div>
                 <div class="p-2">
+                    {{-- Preview image dari DB --}}
+                    @if ($product->photo)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $product->photo) }}" alt="Product Image"
+                                class="h-32 rounded border object-contain">
+                        </div>
+                    @endif
+
+                    {{-- Input file untuk update --}}
                     <input type="file" accept="image/*" name="image"
-                        class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer 
-                           bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 
-                           dark:border-gray-600 dark:placeholder-gray-400"
-                        value="{{ old('image') }}" id="file_input" required>
+                        class="w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        id="file_input">
                 </div>
             </div>
             {{-- Product form --}}
@@ -122,14 +129,21 @@
                             Name</label>
                         <input type="text" id="name" name="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Kemeja Adem" required value="{{ $product->name }}" />
+                            placeholder="Kemeja Adem" required value="{{ old('name', $product->name) }}" />
+                    </div>
+                    <div class="col-span-2">
+                        <label for="slug"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">Slug</label>
+                        <input type="text" id="slug" name="slug"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Kemeja Adem" required value="{{ old('slug', $product->slug) }}" />
                     </div>
                     <div class="">
                         <label for="sku"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SKU</label>
                         <input type="text" id="sku" name="sku"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="XXX" required value="{{ $product->sku }}" />
+                            placeholder="XXX" required value="{{ old('sku', $product->sku) }}" />
                     </div>
                     <div>
                         <label for="default"
@@ -157,6 +171,9 @@
                         <div
                             class="variant-block flex gap-4 border p-2 rounded-lg bg-gray-50 dark:bg-gray-700 items-center">
                             <div>
+                                <input type="hidden" name="variants[{{ $i }}][id]"
+                                    value="{{ $variant->id }}">
+
                                 <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">SKU
                                     Variant</label>
                                 <input type="text" name="variants[{{ $i }}][sku]"
@@ -180,6 +197,17 @@
                                     <option value="L" {{ $variant['size'] == 'L' ? 'selected' : '' }}>L</option>
                                     <option value="XL" {{ $variant['size'] == 'XL' ? 'selected' : '' }}>XL</option>
                                 </select>
+                            </div>
+                            <div>
+                                <label
+                                    class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">Archived</label>
+
+                                <label for="is_archived" class="relative flex items-center cursor-pointer">
+                                    <input type="checkbox" name="variants[{{ $i }}][is_archived]"
+                                        id="is_archived" class="sr-only" {{ $variant['is_archived'] ? 'checked' : '' }}>
+                                    <span
+                                        class="h-6 bg-gray-200 border border-gray-200 rounded-full w-11 toggle-bg dark:bg-gray-700 dark:border-gray-600"></span>
+                                </label>
                             </div>
                             <div class="flex gap-2 mt-6">
                                 <button type="button" class="remove-variant p-2 rounded bg-red-600 text-white"
@@ -221,7 +249,7 @@
             </div>
         </div>
 
-        <script>
+        {{-- <script>
             const variantsWrapper = document.getElementById("variants-wrapper");
             const addVariantBtn = document.getElementById("add-variant");
 
@@ -302,7 +330,104 @@
                 }
                 deleteModal.classList.add("hidden");
             });
+        </script> --}}
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let variantIndex = {{ $product->productVariants->count() }};
+                let variantToDelete = null; // simpan reference variant yang mau dihapus
+
+                const deleteModal = document.getElementById("deleteModal");
+                const cancelDelete = document.getElementById("cancelDelete");
+                const confirmDelete = document.getElementById("confirmDelete");
+
+                function showDeleteModal(variantBlock) {
+                    variantToDelete = variantBlock;
+                    deleteModal.classList.remove("hidden");
+                }
+
+                function hideDeleteModal() {
+                    variantToDelete = null;
+                    deleteModal.classList.add("hidden");
+                }
+
+                // event tombol batal
+                cancelDelete.addEventListener("click", hideDeleteModal);
+
+                // event tombol hapus
+                confirmDelete.addEventListener("click", function() {
+                    if (variantToDelete) {
+                        variantToDelete.remove();
+                        variantToDelete = null;
+                    }
+                    hideDeleteModal();
+                });
+
+                // tambahkan event listener ke tombol delete existing
+                document.querySelectorAll(".remove-variant").forEach(btn => {
+                    btn.addEventListener("click", function() {
+                        const variantBlock = this.closest(".variant-block");
+                        showDeleteModal(variantBlock);
+                    });
+                });
+
+                // event untuk tambah variant baru
+                document.getElementById("add-variant").addEventListener("click", function() {
+                    const wrapper = document.getElementById("variants-wrapper");
+
+                    const newVariant = document.createElement("div");
+                    newVariant.classList.add("variant-block", "flex", "gap-4", "border", "p-2",
+                        "rounded-lg", "bg-gray-50", "dark:bg-gray-700", "items-center");
+
+                    newVariant.innerHTML = `
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">SKU Variant</label>
+                    <input type="text" name="variants[${variantIndex}][sku]"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                        placeholder="SKU123" required />
+                </div>
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                    <input type="number" step="0.01" name="variants[${variantIndex}][price]"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                        placeholder="100000" required />
+                </div>
+                <div>
+                    <label class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Size</label>
+                    <select name="variants[${variantIndex}][size]"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
+                        required>
+                        <option value="">Select size</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </div>
+                <div class="flex gap-2 mt-6">
+                    <button type="button" class="remove-variant p-2 rounded bg-red-600 text-white" title="Delete">
+                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            `;
+
+                    wrapper.appendChild(newVariant);
+
+                    // tambahkan event listener ke tombol delete baru
+                    newVariant.querySelector(".remove-variant").addEventListener("click", function() {
+                        const variantBlock = this.closest(".variant-block");
+                        showDeleteModal(variantBlock);
+                    });
+
+                    variantIndex++;
+                });
+            });
         </script>
+
 
 
     </div>

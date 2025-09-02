@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -39,8 +43,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-
-
         return view('products.create');
     }
 
@@ -134,9 +136,97 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $product = Product::where('slug', $slug)->firstOrFail();
+        // dd($product,   $request->all());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            // ✅ SKU harus unik di tabel products kecuali untuk product ini
+            'sku' => [
+                'required',
+                'string',
+                'max:100',
+                Rule::unique('products', 'sku')->ignore($product->id),
+            ],
+            'slug' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('products', 'slug')->ignore($product->id),
+            ],
+            'category' => 'required|integer',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'variants' => 'required|array|min:1',
+            'variants.*.sku' => 'required|string|max:100',
+            'variants.*.price' => 'required|numeric|min:0',
+            'variants.*.size' => 'required|string|max:10',
+        ]);
+        DB::beginTransaction();
+        try {
+
+            // ✅ Update foto jika ada file baru
+            if ($request->hasFile('image')) {
+                if ($product->photo && Storage::disk('public')->exists($product->photo)) {
+                    Storage::disk('public')->delete($product->photo);
+                }
+                $path = $request->file('image')->store('products', 'public');
+                $product->photo = $path;
+            }
+
+            // ✅ Update data utama produk
+            $product->update([
+                'name' => $request->name,
+                'sku' => $request->sku,
+                'category_id' => $request->category,
+                'photo' => $product->photo,
+            ]);
+
+            // ✅ Handle variants
+            $keepIds = [];
+
+            foreach ($request->variants as $variantData) {
+                if (!empty($variantData['id'])) {
+                    // --- update variant lama
+                    $variant = ProductVariant::where('id', $variantData['id'])
+                        ->where('product_id', $product->id)
+                        ->first();
+
+                    if ($variant) {
+                        $variant->update([
+                            'sku' => $variantData['sku'],
+                            'price' => $variantData['price'],
+                            'size' => $variantData['size'],
+                            'is_archived' => isset($variantData['is_archived']) ? 1 : 0,
+                        ]);
+                        $keepIds[] = $variant->id;
+                    }
+                } else {
+                    // --- create variant baru
+                    $newVariant = $product->productVariants()->create([
+                        'sku' => $variantData['sku'],
+                        'price' => $variantData['price'],
+                        'size' => $variantData['size'],
+                        'is_archived' => isset($variantData['is_archived']) ? 1 : 0,
+                    ]);
+                    $keepIds[] = $newVariant->id;
+                }
+            }
+
+            // --- delete variant yang tidak ada di form
+            $product->productVariants()
+                ->whereNotIn('id', $keepIds)
+                ->delete();
+
+            DB::commit();
+
+            return redirect()
+                ->route('products.index')
+                ->with('success', 'Produk berhasil diupdate!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Update gagal: ' . $e->getMessage());
+        }
     }
 
     /**

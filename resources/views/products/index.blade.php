@@ -154,7 +154,7 @@
 
                                             <img src="{{ asset('storage/' . $product->photo) }}"
                                                 class="w-14 h-14 rounded object-cover">
-                                            <a href={{ route('products.edit', $product->id) }} class="group">
+                                            <a href={{ route('products.show', $product->slug) }} class="group">
                                                 <div
                                                     class="font-semibold text-gray-900 dark:text-white group-hover:underline">
                                                     {{ $product->name }}
