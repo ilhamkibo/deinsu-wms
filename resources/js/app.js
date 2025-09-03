@@ -310,6 +310,8 @@ if (sidebar) {
 }
 
 const fileInput = document.getElementById("file_input");
+const previewImage = document.getElementById("preview-image");
+const oldImageWrapper = document.getElementById("old-image-wrapper");
 
 if (fileInput) {
     fileInput.addEventListener("change", function (event) {
@@ -317,7 +319,13 @@ if (fileInput) {
         if (file) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                document.getElementById("preview-image").src = e.target.result;
+                // ganti foto besar
+                previewImage.src = e.target.result;
+
+                // tampilkan foto lama (jika ada)
+                if (oldImageWrapper) {
+                    oldImageWrapper.classList.remove("hidden");
+                }
             };
             reader.readAsDataURL(file);
         }

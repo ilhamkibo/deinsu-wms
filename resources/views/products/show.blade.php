@@ -5,12 +5,12 @@
         <div class="p-4 block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5  dark:border-gray-700"
             bis_skin_checked="1">
             <div class="w-full mb-1" bis_skin_checked="1">
-                <div class="mb-4" bis_skin_checked="1">
+                <div bis_skin_checked="1">
                     <nav class="flex mb-5" aria-label="Breadcrumb">
                         <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
                             <li class="inline-flex items-center">
                                 <a href={{ route('dashboard') }}
-                                    class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white">
+                                    class="inline-flex items-center text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
                                     <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -29,7 +29,7 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                     <a href={{ route('products.index') }}
-                                        class="ml-1 text-gray-700 hover:text-primary-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Products</a>
+                                        class="ml-1 text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-300 dark:hover:text-white">Products</a>
                                 </div>
                             </li>
                             <li>
@@ -47,6 +47,8 @@
                         </ol>
                     </nav>
                     <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Product Detail</h1>
+                    <a href="{{ route('products.edit', $product->slug) }}" class="text-blue-600 dark:text-blue-500">Edit
+                        Product</a>
                 </div>
 
             </div>

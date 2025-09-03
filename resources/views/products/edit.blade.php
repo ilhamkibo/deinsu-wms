@@ -95,16 +95,18 @@
                 <div class="border-b border-gray-200 dark:border-gray-700 p-2">
                     <h1 class="text-base font-semibold text-gray-900 sm:text-xl dark:text-white">Upload Image</h1>
                 </div>
+
+                <!-- Foto besar (preview / default dari DB) -->
                 <div class="flex justify-center h-96 p-1">
-                    <!-- Preview image -->
                     <img id="preview-image" src="{{ asset('storage/' . $product->photo) }}" alt="Preview"
-                        class="max-h-96 rounded-lg  object-contain" />
+                        class="max-h-96 rounded-lg object-contain" />
                 </div>
+
                 <div class="p-2">
-                    {{-- Preview image dari DB --}}
+                    {{-- Foto lama dari DB (disembunyikan dulu) --}}
                     @if ($product->photo)
-                        <div class="mb-2">
-                            <img src="{{ asset('storage/' . $product->photo) }}" alt="Product Image"
+                        <div id="old-image-wrapper" class="mb-2 hidden">
+                            <img src="{{ asset('storage/' . $product->photo) }}" alt="Product Old Image"
                                 class="h-32 rounded border object-contain">
                         </div>
                     @endif
@@ -115,6 +117,8 @@
                         id="file_input">
                 </div>
             </div>
+
+
             {{-- Product form --}}
             <div
                 class="border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-md bg-gray-50 sm:max-w-lg w-full">
